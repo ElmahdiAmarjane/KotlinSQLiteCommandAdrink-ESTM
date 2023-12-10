@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BottomNavbar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="historique">Historique</string>
+    <string name="Teawithmint">Tea with mint</string>
+    <string name="coffeewithsugar">Coffe with sugar</string>
+    <string name="Commandproducts">Command one of this producrs:</string>
+
+</resources>

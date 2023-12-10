@@ -1,0 +1,32 @@
+<!-- item_command.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/textCommand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Command: " />
+
+    <TextView
+        android:id="@+id/textClassroom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Classroom: " />
+
+    <TextView
+        android:id="@+id/textFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Name: " />
+
+    <TextView
+        android:id="@+id/textDateCommand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date: " />
+</LinearLayout>

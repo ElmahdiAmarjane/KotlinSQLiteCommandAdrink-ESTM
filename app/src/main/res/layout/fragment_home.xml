@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/coffeback"
+    tools:context=".fragments.HomeFragment"
+    >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+       <TextView
+
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="SipSwift"
+           android:textSize="30sp"
+           android:textColor="@color/white"
+           android:background="#AC3915"
+           android:padding="10dp"
+           />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/roundedlayout"
+        android:orientation="vertical"
+        android:padding="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/archivonarrow2"
+                android:text="Command"
+                android:textColor="#76DA02"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/commandeinput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:fontFamily="@font/archivonarrow2"
+                android:hint="Describe your command here"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textColorHint="#9FFFFFFF"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/archivonarrow2"
+                android:text="Classroom"
+                android:textColor="#76DA02"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/classroominput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:fontFamily="@font/archivonarrow2"
+                android:hint="Enter the classroom to place the order"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textColorHint="#9FFFFFFF"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/archivonarrow2"
+                android:text="Full name"
+                android:textColor="#76DA02"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/fullnameinput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:fontFamily="@font/archivonarrow2"
+                android:hint="your Fullname"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textColorHint="#9FFFFFFF"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sendbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFF"
+        android:background="#B83C15"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+
+       />
+   </LinearLayout>
+</FrameLayout>
