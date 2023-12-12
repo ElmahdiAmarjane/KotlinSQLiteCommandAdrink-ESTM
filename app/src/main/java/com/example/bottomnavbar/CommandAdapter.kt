@@ -15,7 +15,7 @@ class CommandAdapter(private val commands: List<CommandModel>) :
     class CommandViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textCommand: TextView = itemView.findViewById(R.id.textCommand)
         val textClassroom: TextView = itemView.findViewById(R.id.textClassroom)
-        val textFullName: TextView = itemView.findViewById(R.id.textFullName)
+
         val textDateCommand: TextView = itemView.findViewById(R.id.textDateCommand)
     }
 
@@ -28,10 +28,10 @@ class CommandAdapter(private val commands: List<CommandModel>) :
     override fun onBindViewHolder(holder: CommandViewHolder, position: Int) {
         val currentCommand = commands[position]
 
-        holder.textCommand.text = "Command: ${currentCommand.command}"
-        holder.textClassroom.text = "Classroom: ${currentCommand.classroom}"
-        holder.textFullName.text = "Full Name: ${currentCommand.fullName}"
-        holder.textDateCommand.text = "Date: ${currentCommand.dateCommand}"
+        holder.textCommand.text = currentCommand.command
+        holder.textClassroom.text = currentCommand.classroom
+
+        holder.textDateCommand.text =currentCommand.dateCommand
     }
 
     override fun getItemCount(): Int {

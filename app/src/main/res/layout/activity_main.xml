@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cbn_background="@color/black"
-        app:cbn_fabColor="#B83C15"
+        app:cbn_fabColor="#E8A619"
         app:cbn_iconColor="@color/white"
         app:cbn_height="76dp"
         app:cbn_icon_size="24dp"

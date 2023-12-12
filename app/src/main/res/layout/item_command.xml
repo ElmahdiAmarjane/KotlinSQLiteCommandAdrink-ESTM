@@ -3,30 +3,81 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="@drawable/roundedlayout"
+    android:layout_margin="5dp">
 
-    <TextView
-        android:id="@+id/textCommand"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Command: " />
+        android:orientation="vertical"
+        android:padding="8dp"
 
-    <TextView
-        android:id="@+id/textClassroom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Classroom: " />
+        android:layout_margin="5dp">
 
-    <TextView
-        android:id="@+id/textFullName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Full Name: " />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textCommandlibelle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="Command: " />
+            <TextView
+                android:id="@+id/textCommand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#CF3B0C"
+                android:text="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textClassroomlibelle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Classroom: " />
+            <TextView
+                android:id="@+id/textClassroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
 
-    <TextView
-        android:id="@+id/textDateCommand"
-        android:layout_width="wrap_content"
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textDateCommandlibelle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date: " />
+            <TextView
+                android:id="@+id/textDateCommand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date: " />
+        android:layout_weight="5"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/xmark"
+           />
+    </LinearLayout>
+
 </LinearLayout>

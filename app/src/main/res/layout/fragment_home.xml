@@ -3,23 +3,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/coffeback"
+    android:background="#FEFFFF"
     tools:context=".fragments.HomeFragment"
     >
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:orientation="vertical">
-       <TextView
 
+       <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text="SipSwift"
-           android:textSize="30sp"
-           android:textColor="@color/white"
-           android:background="#AC3915"
-           android:padding="10dp"
-           />
+           android:orientation="horizontal"
+           android:background="#F1F3F6"
+           android:padding="5dp">
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="50dp"
+               android:src="@drawable/sipswiftlogo"
+               android:layout_marginLeft="5dp"
+
+               />
+           <Space
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"/>
+
+           <ImageView
+               xmlns:android="http://schemas.android.com/apk/res/android"
+               android:id="@+id/ButtonlogoEstm"
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:background="@drawable/logo_round_estm"
+                android:layout_marginRight="12dp"
+               />
+       </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +45,7 @@
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/roundedlayout"
         android:orientation="vertical"
-        android:padding="40dp">
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivonarrow2"
                 android:text="Command"
-                android:textColor="#76DA02"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 />
@@ -48,7 +66,7 @@
             <EditText
                 android:id="@+id/commandeinput"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginBottom="30dp"
                 android:ems="10"
                 android:fontFamily="@font/archivonarrow2"
@@ -56,7 +74,9 @@
                 android:inputType="text"
                 android:textColor="@color/white"
                 android:textSize="25dp"
-                android:textColorHint="#9FFFFFFF"
+                android:textColorHint="#97000000"
+                android:background="@drawable/roundedinput"
+                android:paddingLeft="10sp"
                 />
         </LinearLayout>
 
@@ -71,22 +91,24 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivonarrow2"
                 android:text="Classroom"
-                android:textColor="#76DA02"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/classroominput"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginBottom="30dp"
                 android:ems="10"
                 android:fontFamily="@font/archivonarrow2"
                 android:hint="Enter the classroom to place the order"
                 android:inputType="text"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="25dp"
-                android:textColorHint="#9FFFFFFF"/>
+                android:textColorHint="#97000000"
+                android:background="@drawable/roundedinput"
+                android:paddingLeft="10sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -100,14 +122,14 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivonarrow2"
                 android:text="Full name"
-                android:textColor="#76DA02"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/fullnameinput"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:fontFamily="@font/archivonarrow2"
@@ -115,21 +137,23 @@
                 android:inputType="text"
                 android:textColor="@color/white"
                 android:textSize="25dp"
-                android:textColorHint="#9FFFFFFF"/>
+                android:textColorHint="#97000000"
+                android:paddingLeft="10sp"
+                android:background="@drawable/roundedinput"/>
         </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sendbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:layout_marginTop="20dp"
+            android:textColor="#FFF"
+            android:background="@drawable/button_background"
+            android:textStyle="bold"
+            android:layout_gravity="center"
 
+            />
     </LinearLayout>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/sendbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send"
-        android:layout_marginTop="20dp"
-        android:textColor="#FFF"
-        android:background="#B83C15"
-        android:textStyle="bold"
-        android:layout_gravity="center"
 
-       />
    </LinearLayout>
 </FrameLayout>
