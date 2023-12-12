@@ -3,16 +3,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EC8261"
     tools:context=".fragments.StarsFragment">
 
-
-    <TextView
-        android:gravity="center"
-        android:textSize="48dp"
-        android:textColor="@color/black"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Stars" />
+        android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#F1F3F6"
+        android:padding="5dp">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:src="@drawable/sipswiftlogo"
+            android:layout_marginLeft="5dp"
+
+            />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <ImageView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ButtonlogoEstm"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/logo_round_estm"
+            android:layout_marginRight="12dp"
+            />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="80dp">
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Your score"
+                 android:textSize="40dp"
+                 android:textStyle="bold"
+                 android:textColor="#000000"/>
+            <ImageView
+                android:id="@+id/rotatingImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/star"
+                android:layout_centerInParent="true"
+                android:onClick="startRotationAnimation"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120"
+                android:textSize="60dp"
+                android:textStyle="bold"
+                android:textColor="#20C60D"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/increasebypurchasing"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:background="#5C20C60D"
+                android:layout_marginTop="50dp"
+               />
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </FrameLayout>
