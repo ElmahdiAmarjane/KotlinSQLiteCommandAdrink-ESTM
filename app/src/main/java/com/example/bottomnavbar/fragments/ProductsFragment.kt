@@ -28,7 +28,7 @@ class ProductsFragment : Fragment() {
         productTitle.bringToFront()
         //hide textview when i scroll
         val nestedScrollView = rootView.findViewById<ScrollView>(R.id.scrollview1)
-        val textViewToHide = rootView.findViewById<TextView>(R.id.choseproducttitle)
+        /*val textViewToHide = rootView.findViewById<TextView>(R.id.choseproducttitle)
         nestedScrollView.viewTreeObserver.addOnScrollChangedListener(
             ViewTreeObserver.OnScrollChangedListener {
                 if (nestedScrollView.scrollY > 0) {
@@ -39,7 +39,7 @@ class ProductsFragment : Fragment() {
                     textViewToHide.visibility = View.VISIBLE
                 }
             }
-        )
+        )*/
         return rootView
     }
 
