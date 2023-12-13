@@ -1,6 +1,5 @@
 package com.example.bottomnavbar.fragments
 
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,12 +10,15 @@ import androidx.appcompat.widget.AppCompatButton
 import com.example.bottomnavbar.R
 import com.example.bottomnavbar.SharedViewModel
 import com.example.bottomnavbar.DatabaseHelper
-
-
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 
 class HomeFragment : Fragment() {
 
     private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,20 +26,36 @@ class HomeFragment : Fragment() {
     ): View? {
         val dbHelper = DatabaseHelper(requireContext())
         val homeView = inflater.inflate(R.layout.fragment_home, container, false)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+
         val sendbutton = homeView.findViewById<AppCompatButton>(R.id.sendbutton)
         val commandeinput = homeView.findViewById<EditText>(R.id.commandeinput)
         val classroominput = homeView.findViewById<EditText>(R.id.classroominput)
         val fullnameinput = homeView.findViewById<EditText>(R.id.fullnameinput)
-        sendbutton.setOnClickListener {
 
-            dbHelper.insertCommand(commandeinput.text.toString(),classroominput.text.toString()
-            ,fullnameinput.text.toString())
+        sendbutton.setOnClickListener {
+            val userId = firebaseAuth.currentUser?.uid
+            userId?.let {
+                val ordersRef = database.getReference("orders")
+                val orderRef = ordersRef.push() // Generate a unique key for the order node
+
+                orderRef.child("userId").setValue(userId)
+                orderRef.child("commande").setValue(commandeinput.text.toString())
+                orderRef.child("classroom").setValue(classroominput.text.toString())
+                orderRef.child("fullname").setValue(fullnameinput.text.toString())
+                orderRef.child("date").setValue(ServerValue.TIMESTAMP) // Add the order date
+
+
+                // After adding the order, navigate to the HistoryFragment
+                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment_container, HistoriqueFragment())
+                fragmentTransaction.addToBackStack(null) // Optional: Adds the transaction to the back stack
+                fragmentTransaction.commit()
+            }
         }
 
-
-        // Inflate the layout for this fragment
         return homeView
     }
-
-
 }
