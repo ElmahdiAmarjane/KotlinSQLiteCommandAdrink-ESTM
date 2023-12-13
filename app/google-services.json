@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "703018791456",
+    "firebase_url": "https://miniprojectkotlin-lpdsic-default-rtdb.firebaseio.com",
+    "project_id": "miniprojectkotlin-lpdsic",
+    "storage_bucket": "miniprojectkotlin-lpdsic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703018791456:android:6ac7e67d4d415abf974245",
+        "android_client_info": {
+          "package_name": "com.example.bottomnavbar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ_lKtKznSyuA95CGXqg9uMnZR4fPqHsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703018791456:android:c56b8ef2ec4e463f974245",
+        "android_client_info": {
+          "package_name": "com.example.testlogin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ_lKtKznSyuA95CGXqg9uMnZR4fPqHsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
