@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/dialogBox"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/lavender_border">
+        android:background="@drawable/lavender_border"
+        >
 
         <TextView
             android:layout_width="match_parent"
