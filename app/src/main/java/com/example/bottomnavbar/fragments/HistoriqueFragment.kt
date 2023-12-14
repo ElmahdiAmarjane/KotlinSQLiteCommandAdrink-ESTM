@@ -48,6 +48,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -63,6 +64,8 @@ import com.google.firebase.database.ValueEventListener
 
 class HistoriqueFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
+    private lateinit var contentTextHistory: TextView
+    private lateinit var contentTextStars: TextView
     private lateinit var commandAdapter: CommandAdapter
     private lateinit var ordersRef: DatabaseReference
     private lateinit var firebaseAuth: FirebaseAuth
@@ -73,6 +76,8 @@ class HistoriqueFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_historique, container, false)
         recyclerView = rootView.findViewById(R.id.recyclerView)
+        contentTextHistory=rootView.findViewById(R.id.contentTextHistory)
+        contentTextStars=rootView.findViewById(R.id.contentTextStars)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         firebaseAuth = FirebaseAuth.getInstance()
@@ -96,6 +101,14 @@ class HistoriqueFragment : Fragment() {
                     }
                     commandAdapter = CommandAdapter(orders)
                     recyclerView.adapter = commandAdapter
+
+                    // Update total orders count
+                    contentTextHistory.text = orders.size.toString()
+
+                    //this means each time you order some thing you get 1.4 stars
+                    //contentTextStars.text = (orders.size*1.4).toString();
+                    contentTextStars.text = String.format("%.2f", orders.size * 1.4)
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
