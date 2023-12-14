@@ -88,7 +88,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="5"
+        android:layout_weight="4"
         android:layout_gravity="center"
         android:gravity="center">
 <!--        <ImageView-->
@@ -104,8 +104,8 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="#ffffff"
-            android:background="#00ff00"
-            android:paddingHorizontal="3dp"
+            android:background="#1FAE1F"
+            android:paddingHorizontal="4dp"
             android:paddingVertical="10dp"
             />
     </LinearLayout>

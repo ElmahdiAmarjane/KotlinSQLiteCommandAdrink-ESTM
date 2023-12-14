@@ -6,6 +6,6 @@ data class Order(
     val commande: String? = null,
     val classroom: String? = null,
     val fullname: String? = null,
-    val status: String?=null,
+    var status: String="null",
     val date: Long? = null
 )

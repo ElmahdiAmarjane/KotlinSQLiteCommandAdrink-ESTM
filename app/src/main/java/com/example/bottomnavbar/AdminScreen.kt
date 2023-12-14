@@ -16,6 +16,8 @@ import java.util.Date
 
 class AdminScreen : AppCompatActivity() {
 
+    // Declare the list of orders at the class level
+    private val orders = mutableListOf<Order>()
     private lateinit var recyclerView: RecyclerView
     private lateinit var ordersAdapter: CommandAdapter
     private lateinit var database: FirebaseDatabase
@@ -57,6 +59,8 @@ class AdminScreen : AppCompatActivity() {
                 ordersAdapter = CommandAdapter(orders) { clickedOrder ->
                     // Handle item click here, e.g., show a dialog
                     showStatusUpdateDialog(clickedOrder)
+                    // The callback to update the order status text
+                    updateOrderStatusText(clickedOrder.orderId, clickedOrder.status)
                 }
                 
                 recyclerView.adapter = ordersAdapter
@@ -75,12 +79,26 @@ class AdminScreen : AppCompatActivity() {
         contentTextHistory.text = "Admin Orders for to day : $formattedDate"
     }
 
+    private fun updateOrderStatusText(orderId: String, newStatus: String) {
+        // Iterate through the orders list to find the corresponding Order
+        for (order in orders) {
+            if (order.orderId == orderId) {
+                // Update the status of the Order object
+                order.status = newStatus
+                // Notify the adapter that the data has changed to refresh the RecyclerView
+                ordersAdapter.notifyDataSetChanged()
+                break
+            }
+        }
+    }
+
+
     private fun showStatusUpdateDialog(order: Order) {
         val formattedDate = formatDate(order.date)
         val orderId:String=order.orderId
 
         // Use the formattedDate in the dialog title
-        val dialogTitle = "Update order Status at : $formattedDate $orderId"
+        val dialogTitle = "Update order Status at : $formattedDate"
 
         // Implement the dialog to update the status here
         // You can use AlertDialog or a custom dialog based on your requirements
@@ -119,6 +137,9 @@ class AdminScreen : AppCompatActivity() {
         orderRef.child("status").setValue(newStatus)
             .addOnSuccessListener {
                 // Handle success, if needed
+                //here I want to update the text for the new status of the order that is changed
+                //but how to do it
+
             }
             .addOnFailureListener {
                 // Handle failure, if needed
