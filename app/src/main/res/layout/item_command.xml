@@ -101,11 +101,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="status"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:textStyle="bold"
+            android:textColor="#ffffff"
             android:background="#00ff00"
             android:paddingHorizontal="3dp"
-            android:paddingVertical="30dp"
+            android:paddingVertical="10dp"
             />
     </LinearLayout>
 

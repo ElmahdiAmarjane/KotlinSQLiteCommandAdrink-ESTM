@@ -11,7 +11,7 @@ import com.example.bottomnavbar.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CommandAdapter(private val orders: List<Order>) : RecyclerView.Adapter<CommandAdapter.ViewHolder>() {
+class CommandAdapter(private val orders: List<Order>,private val onItemClickListener: (Order) -> Unit) : RecyclerView.Adapter<CommandAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textCommand: TextView = itemView.findViewById(R.id.textCommand)
@@ -19,7 +19,16 @@ class CommandAdapter(private val orders: List<Order>) : RecyclerView.Adapter<Com
         val textDateCommand: TextView = itemView.findViewById(R.id.textDateCommand)
         val textfullname: TextView = itemView.findViewById(R.id.textfullname)
         val textCommandStatus: TextView = itemView.findViewById(R.id.textCommandStatus)
-      //  val xmarkImageView: ImageView = itemView.findViewById(R.id.xmarkImageView)
+        //  val xmarkImageView: ImageView = itemView.findViewById(R.id.xmarkImageView)
+
+        init {
+            textCommandStatus.setOnClickListener {
+                val clickedOrder = orders[adapterPosition]
+                onItemClickListener.invoke(clickedOrder)
+            }
+       }
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,6 +44,8 @@ class CommandAdapter(private val orders: List<Order>) : RecyclerView.Adapter<Com
         holder.textfullname.text = currentOrder.fullname
         holder.textCommandStatus.text = currentOrder.status
         holder.textDateCommand.text = formatDate(currentOrder.date)
+
+
     }
 
     override fun getItemCount(): Int {
