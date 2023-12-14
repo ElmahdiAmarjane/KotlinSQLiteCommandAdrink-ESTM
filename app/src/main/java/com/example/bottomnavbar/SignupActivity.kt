@@ -66,6 +66,7 @@ class SignupActivity : AppCompatActivity() {
             // Store email and password as separate child nodes
             userRef.child("email").setValue(email)
             userRef.child("password").setValue(password)
+            userRef.child("stars").setValue(6.20)
         }
     }
 

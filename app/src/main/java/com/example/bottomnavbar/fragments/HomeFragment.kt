@@ -11,8 +11,11 @@ import com.example.bottomnavbar.R
 import com.example.bottomnavbar.SharedViewModel
 import com.example.bottomnavbar.DatabaseHelper
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
+import com.google.firebase.database.ValueEventListener
 
 class HomeFragment : Fragment() {
 
@@ -47,6 +50,8 @@ class HomeFragment : Fragment() {
                 orderRef.child("fullname").setValue(fullnameinput.text.toString())
                 orderRef.child("date").setValue(ServerValue.TIMESTAMP) // Add the order date
 
+                // Update user's stars
+                updateStars(userId)
 
                 // After adding the order, navigate to the HistoryFragment
                 val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -57,5 +62,23 @@ class HomeFragment : Fragment() {
         }
 
         return homeView
+    }
+
+    private fun updateStars(userId: String) {
+        val usersRef = database.getReference("Users").child(userId).child("stars")
+
+        usersRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val currentStars = snapshot.getValue(Double::class.java) ?: 0.0
+                val newStars = currentStars + 1.4
+
+                // Update the user's stars in the database
+                usersRef.setValue(newStars)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
     }
 }
