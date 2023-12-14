@@ -55,6 +55,7 @@ class CommandAdapter(private val orders: List<Order>) : RecyclerView.Adapter<Com
         val textCommand: TextView = itemView.findViewById(R.id.textCommand)
         val textClassroom: TextView = itemView.findViewById(R.id.textClassroom)
         val textDateCommand: TextView = itemView.findViewById(R.id.textDateCommand)
+        val textfullname: TextView = itemView.findViewById(R.id.textfullname)
       //  val xmarkImageView: ImageView = itemView.findViewById(R.id.xmarkImageView)
     }
 
@@ -68,6 +69,7 @@ class CommandAdapter(private val orders: List<Order>) : RecyclerView.Adapter<Com
 
         holder.textCommand.text = currentOrder.commande
         holder.textClassroom.text = currentOrder.classroom
+        holder.textfullname.text = currentOrder.fullname
         holder.textDateCommand.text = formatDate(currentOrder.date)
     }
 

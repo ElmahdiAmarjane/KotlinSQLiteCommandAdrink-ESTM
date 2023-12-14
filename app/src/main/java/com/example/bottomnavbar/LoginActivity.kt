@@ -32,8 +32,13 @@ class LoginActivity : AppCompatActivity() {
 
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
                     if (it.isSuccessful){
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
+                        if(email != "admin@gmail.com") {
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                        }else{
+                            val intent = Intent(this, AdminScreen::class.java)
+                            startActivity(intent)
+                        }
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                     }
