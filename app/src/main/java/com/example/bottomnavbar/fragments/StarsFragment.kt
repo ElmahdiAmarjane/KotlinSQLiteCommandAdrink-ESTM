@@ -34,7 +34,7 @@ class StarsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_stars, container, false)
-//        starsTextView = rootView.findViewById(R.id.starsTextView)
+        starsTextView = rootView.findViewById(R.id.starsTextView)
         val rotatingImageView: ImageView = rootView.findViewById(com.example.bottomnavbar.R.id.rotatingImageView)
 
         // Start the rotation animation
