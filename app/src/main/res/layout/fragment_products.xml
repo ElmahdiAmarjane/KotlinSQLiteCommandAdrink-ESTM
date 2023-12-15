@@ -8,7 +8,7 @@
     tools:context=".fragments.ProductsFragment">
 
 <LinearLayout
-    android:id="@+id/producttitle"
+    android:id="@+id/Layoutcontainermenu"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -53,21 +53,24 @@
             android:textStyle="bold"
             />
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/allselector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Coffee"
+            android:text="All"
             android:layout_weight="1"
             android:drawableRight="@drawable/baseline_arrow_drop_down_24"/>
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/drinkselector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cake"
+            android:text="Drink"
             android:layout_weight="1"
             android:drawableRight="@drawable/baseline_arrow_drop_down_24"/>
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cakeselector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Juice"
+            android:text="Cake"
             android:layout_weight="1"
             android:drawableRight="@drawable/baseline_arrow_drop_down_24"
             />
@@ -79,370 +82,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="60sp"
         >
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:padding="20dp"
-          android:orientation="vertical">
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="@drawable/circle_shape"
-               android:paddingVertical="10dp"
-               android:paddingLeft="10dp"
-               android:layout_marginBottom="20dp"
-               >
-               <de.hdodenhof.circleimageview.CircleImageView
-                   android:layout_width="90dp"
-                   android:layout_height="90dp"
-                   android:src="@drawable/coffewithmilk"
-                   android:scaleType="centerCrop" />
 
-               <LinearLayout
-                   android:layout_width="wrap_content"
-                   android:layout_height="match_parent"
-                   android:orientation="vertical"
-                   android:gravity="center_vertical"
-                   android:layout_marginLeft="20dp"
-                   >
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="@string/coffeewithsugar"
-                       android:textSize="20dp"
-                       android:textColor="@color/white"
-                       android:fontFamily="@font/regulararchive"
-
-                       />
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="10 DH"
-                       android:textSize="20dp"
-                       android:textColor="#20DA20"
-                       android:fontFamily="@font/regulararchive"
-                       />
-
-               </LinearLayout>
-               <de.hdodenhof.circleimageview.CircleImageView
-                   android:layout_width="30dp"
-                   android:layout_height="30dp"
-                   android:layout_gravity="center"
-                   android:layout_marginLeft="30dp"
-                   android:src="@color/white"
-
-                   android:scaleType="centerCrop" />
-
-           </LinearLayout>
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@drawable/circle_shape"
-              android:paddingVertical="10dp"
-              android:paddingLeft="10dp"
-              android:layout_marginBottom="20dp"
-              >
-              <de.hdodenhof.circleimageview.CircleImageView
-                  android:layout_width="90dp"
-                  android:layout_height="90dp"
-                  android:src="@drawable/coffewithmilk"
-                  android:scaleType="centerCrop" />
-
-              <LinearLayout
-                  android:layout_width="wrap_content"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  android:gravity="center_vertical"
-                  android:layout_marginLeft="20dp"
-                  >
-                  <TextView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="@string/coffeewithsugar"
-                      android:textSize="20dp"
-                      android:textColor="@color/white"
-                      android:fontFamily="@font/regulararchive"
-
-                      />
-                  <TextView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="10 DH"
-                      android:textSize="20dp"
-                      android:textColor="#20DA20"
-                      android:fontFamily="@font/regulararchive"
-                      />
-
-              </LinearLayout>
-              <de.hdodenhof.circleimageview.CircleImageView
-                  android:layout_width="30dp"
-                  android:layout_height="30dp"
-                  android:layout_gravity="center"
-                  android:layout_marginLeft="30dp"
-                  android:src="@color/white"
-
-                  android:scaleType="centerCrop" />
-
-          </LinearLayout>
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@drawable/circle_shape"
-              android:paddingVertical="10dp"
-              android:paddingLeft="10dp"
-              android:layout_marginBottom="20dp"
-              >
-              <de.hdodenhof.circleimageview.CircleImageView
-                  android:layout_width="90dp"
-                  android:layout_height="90dp"
-                  android:src="@drawable/coffewithmilk"
-                  android:scaleType="centerCrop" />
-
-              <LinearLayout
-                  android:layout_width="wrap_content"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  android:gravity="center_vertical"
-                  android:layout_marginLeft="20dp"
-                  >
-                  <TextView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="@string/coffeewithsugar"
-                      android:textSize="20dp"
-                      android:textColor="@color/white"
-                      android:fontFamily="@font/regulararchive"
-
-                      />
-                  <TextView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="10 DH"
-                      android:textSize="20dp"
-                      android:textColor="#20DA20"
-                      android:fontFamily="@font/regulararchive"
-                      />
-
-              </LinearLayout>
-              <de.hdodenhof.circleimageview.CircleImageView
-                  android:layout_width="30dp"
-                  android:layout_height="30dp"
-                  android:layout_gravity="center"
-                  android:layout_marginLeft="30dp"
-                  android:src="@color/white"
-
-                  android:scaleType="centerCrop" />
-
-          </LinearLayout>
-          <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@drawable/circle_shape"
-          android:paddingVertical="10dp"
-          android:paddingLeft="10dp"
-          android:layout_marginBottom="20dp"
-          >
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:layout_width="90dp"
-              android:layout_height="90dp"
-              android:src="@drawable/coffewithmilk"
-              android:scaleType="centerCrop" />
-
-          <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:gravity="center_vertical"
-              android:layout_marginLeft="20dp"
-              >
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/coffeewithsugar"
-                  android:textSize="20dp"
-                  android:textColor="@color/white"
-                  android:fontFamily="@font/regulararchive"
-
-                  />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="10 DH"
-                  android:textSize="20dp"
-                  android:textColor="#20DA20"
-                  android:fontFamily="@font/regulararchive"
-                  />
-
-          </LinearLayout>
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:layout_width="30dp"
-              android:layout_height="30dp"
-              android:layout_gravity="center"
-              android:layout_marginLeft="30dp"
-              android:src="@color/white"
-
-              android:scaleType="centerCrop" />
-
-      </LinearLayout>
-          <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@drawable/circle_shape"
-          android:paddingVertical="10dp"
-          android:paddingLeft="10dp"
-          android:layout_marginBottom="20dp"
-          >
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:layout_width="90dp"
-              android:layout_height="90dp"
-              android:src="@drawable/coffewithmilk"
-              android:scaleType="centerCrop" />
-
-          <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:gravity="center_vertical"
-              android:layout_marginLeft="20dp"
-              >
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/coffeewithsugar"
-                  android:textSize="20dp"
-                  android:textColor="@color/white"
-                  android:fontFamily="@font/regulararchive"
-
-                  />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="10 DH"
-                  android:textSize="20dp"
-                  android:textColor="#20DA20"
-                  android:fontFamily="@font/regulararchive"
-                  />
-
-          </LinearLayout>
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:layout_width="30dp"
-              android:layout_height="30dp"
-              android:layout_gravity="center"
-              android:layout_marginLeft="30dp"
-              android:src="@color/white"
-
-              android:scaleType="centerCrop" />
-
-      </LinearLayout>
-          <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@drawable/circle_shape"
-          android:paddingVertical="10dp"
-          android:paddingLeft="10dp"
-          android:layout_marginBottom="20dp"
-          >
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:layout_width="90dp"
-              android:layout_height="90dp"
-              android:src="@drawable/coffewithmilk"
-              android:scaleType="centerCrop" />
-
-          <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:gravity="center_vertical"
-              android:layout_marginLeft="20dp"
-              >
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/coffeewithsugar"
-                  android:textSize="20dp"
-                  android:textColor="@color/white"
-                  android:fontFamily="@font/regulararchive"
-
-                  />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="10 DH"
-                  android:textSize="20dp"
-                  android:textColor="#20DA20"
-                  android:fontFamily="@font/regulararchive"
-                  />
-
-          </LinearLayout>
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:layout_width="30dp"
-              android:layout_height="30dp"
-              android:layout_gravity="center"
-              android:layout_marginLeft="30dp"
-              android:src="@color/white"
-
-              android:scaleType="centerCrop" />
-
-      </LinearLayout>
-          <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@drawable/circle_shape"
-          android:paddingVertical="10dp"
-          android:paddingLeft="10dp"
-          android:layout_marginBottom="20dp"
-          >
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:layout_width="90dp"
-              android:layout_height="90dp"
-              android:src="@drawable/coffewithmilk"
-              android:scaleType="centerCrop" />
-
-          <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:gravity="center_vertical"
-              android:layout_marginLeft="20dp"
-              >
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/coffeewithsugar"
-                  android:textSize="20dp"
-                  android:textColor="@color/white"
-                  android:fontFamily="@font/regulararchive"
-
-                  />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="10 DH"
-                  android:textSize="20dp"
-                  android:textColor="#20DA20"
-                  android:fontFamily="@font/regulararchive"
-                  />
-
-          </LinearLayout>
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:layout_width="30dp"
-              android:layout_height="30dp"
-              android:layout_gravity="center"
-              android:layout_marginLeft="30dp"
-              android:src="@color/white"
-
-              android:scaleType="centerCrop" />
-
-      </LinearLayout>
-
-
-
-
-
-
-      </LinearLayout>
-
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerproducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            android:layout_marginTop="5dp"/>
 
 
     </ScrollView>

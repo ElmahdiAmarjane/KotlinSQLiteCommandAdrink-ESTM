@@ -1,47 +1,79 @@
 package com.example.bottomnavbar.fragments
 
+
 import android.os.Bundle
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
-import android.widget.LinearLayout
-import android.widget.ScrollView
+
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
+
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.bottomnavbar.CommandAdapter
+
+import com.example.bottomnavbar.DatabaseHelper
+import com.example.bottomnavbar.MenuAdapter
 import com.example.bottomnavbar.R
 
 
+
 class ProductsFragment : Fragment() {
-
-
+    //  private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var menuAdapter: MenuAdapter
+    private lateinit var dbHelper: DatabaseHelper
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        var rootview =inflater.inflate(R.layout.fragment_products, container, false)
+        dbHelper = DatabaseHelper(requireContext())
+        recyclerView = rootview.findViewById(R.id.recyclerproducts)
+         val allselector = rootview.findViewById<AppCompatButton>(R.id.allselector)
+         val drinkselector = rootview.findViewById<AppCompatButton>(R.id.drinkselector)
+         val cakeselector = rootview.findViewById<AppCompatButton>(R.id.cakeselector)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val rootView = inflater.inflate(R.layout.fragment_products, container, false)
 
-        val productTitle = rootView.findViewById<LinearLayout>(R.id.producttitle)
 
-       //  Bring the view to the front
-        productTitle.bringToFront()
-        //hide textview when i scroll
-        val nestedScrollView = rootView.findViewById<ScrollView>(R.id.scrollview1)
-        /*val textViewToHide = rootView.findViewById<TextView>(R.id.choseproducttitle)
-        nestedScrollView.viewTreeObserver.addOnScrollChangedListener(
-            ViewTreeObserver.OnScrollChangedListener {
-                if (nestedScrollView.scrollY > 0) {
-                    // User is scrolling, hide the TextView
-                    textViewToHide.visibility = View.GONE
-                } else {
-                    // User is at the top, show the TextView
-                    textViewToHide.visibility = View.VISIBLE
-                }
-            }
-        )*/
-        return rootView
+      if(!dbHelper.hasRecords()){
+          dbHelper.insertProduct("Normal coffee",10.0,"coffee",1)
+          dbHelper.insertProduct("Coffee with milk",14.0,"coffee",2)
+          dbHelper.insertProduct("Tea",5.0,"drink",3)
+          dbHelper.insertProduct("Orange juice",18.0,"drink",4)
+          dbHelper.insertProduct("Kiwi juice",20.0,"drink",5)
+          dbHelper.insertProduct("Cocacola",8.0,"drink",6)
+          dbHelper.insertProduct("Watter",3.0,"drink",7)
+          dbHelper.insertProduct("Croissant",10.0,"cake",8)
+          dbHelper.insertProduct("Mille feuilles",10.0,"cake",9)
+      }
+        loadProducts()
+        allselector.setOnClickListener{
+            menuAdapter = MenuAdapter(dbHelper.getAllProducts())
+            recyclerView.adapter = menuAdapter
+
+        }
+        drinkselector.setOnClickListener{
+            menuAdapter = MenuAdapter(dbHelper.getDrinkProducts())
+            recyclerView.adapter = menuAdapter
+        }
+        cakeselector.setOnClickListener{
+            menuAdapter = MenuAdapter(dbHelper.getCakeProducts())
+            recyclerView.adapter = menuAdapter
+        }
+
+
+        return  rootview
+
     }
-
+    private fun loadProducts() {
+        val products = dbHelper.getAllProducts()
+        menuAdapter = MenuAdapter(products)
+        recyclerView.adapter = menuAdapter
+    }
 
 }

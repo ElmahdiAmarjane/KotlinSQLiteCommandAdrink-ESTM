@@ -4,66 +4,123 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import java.text.SimpleDateFormat
-import java.util.Date
+import android.util.Log
+
 
 class DatabaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
         const val DATABASE_NAME = "sipswiftdb"
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 2
     }
 
-    // Define your table creation query
-    private val CREATE_COMMANDS_TABLE =
-        "CREATE TABLE commands (_id INTEGER PRIMARY KEY AUTOINCREMENT, command TEXT, classroom TEXT, fullName TEXT, datecommand TEXT);"
+
+    private val CREATE_MENU_TABLE =
+        "CREATE TABLE menu (_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, price DOUBLE, type TEXT, imagesrc INTEGER );"
 
     override fun onCreate(db: SQLiteDatabase) {
-        // Create the table when the database is created
-        db.execSQL(CREATE_COMMANDS_TABLE)
+        try {
+            Log.d("DatabaseHelper", "onCreate called")
+            // Create the table when the database is created
+            db.execSQL(CREATE_MENU_TABLE)
+        } catch (e: Exception) {
+            Log.e("DatabaseHelper", "Error creating table", e)
+        }
     }
 
-    fun insertCommand(command: String, classroom: String, fullName: String) {
+    fun insertProduct(title: String, price: Double, type: String , imagesrc:Int) {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put("command", command)
-            put("classroom", classroom)
-            put("fullName", fullName)
-
-            // Get the current date and format it as a string
-            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-            val currentDate = sdf.format(Date())
-            put("datecommand", currentDate)
+            put("title", title)
+            put("price", price)
+            put("type", type)
+            put("imagesrc", imagesrc)
         }
 
-        db.insert("commands", null, values)
+        db.insert("menu", null, values)
         db.close()
     }
 
-    fun getAllCommands(): List<CommandModel> {
-        val commands = mutableListOf<CommandModel>()
+    fun getAllProducts(): List<MenuModel> {
+        val products = mutableListOf<MenuModel>()
         val db = readableDatabase
         val cursor = db.query(
-            "commands", null, null, null, null, null, null
+            "menu", null, null, null, null, null, null
         )
-
         while (cursor.moveToNext()) {
-            val command = cursor.getString(cursor.getColumnIndexOrThrow("command"))
-            val classroom = cursor.getString(cursor.getColumnIndexOrThrow("classroom"))
-            val fullName = cursor.getString(cursor.getColumnIndexOrThrow("fullName"))
-            val dateCommand = cursor.getString(cursor.getColumnIndexOrThrow("datecommand"))
+            val title = cursor.getString(cursor.getColumnIndexOrThrow("title"))
+            val price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"))
+            val type = cursor.getString(cursor.getColumnIndexOrThrow("type"))
+            val imagesrc = cursor.getInt(cursor.getColumnIndexOrThrow("imagesrc"))
 
-            val commandModel = CommandModel(command, classroom, fullName, dateCommand)
-            commands.add(commandModel)
+            val menuModel = MenuModel(title, price, type, imagesrc)
+            products.add(menuModel)
         }
 
         cursor.close()
         db.close()
-        return commands
+        return products
     }
+    fun clearMenuTable() {
+        val db = writableDatabase
+        db.delete("menu", null, null)
+        db.close()
+    }
+    fun hasRecords(): Boolean {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT COUNT(*) FROM menu", null)
+        cursor.moveToFirst()
+        val count = cursor.getInt(0)
+        cursor.close()
+        db.close()
+        return count > 0
+    }
+    fun getDrinkProducts(): List<MenuModel> {
+        val products = mutableListOf<MenuModel>()
+        val db = readableDatabase
 
-    data class CommandModel(val command: String, val classroom: String, val fullName: String, val dateCommand: String)
+        val cursor = db.query(
+            "menu", null, "type = ?", arrayOf("drink"), null, null, null
+        )
+
+        while (cursor.moveToNext()) {
+            val title = cursor.getString(cursor.getColumnIndexOrThrow("title"))
+            val price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"))
+            val type = cursor.getString(cursor.getColumnIndexOrThrow("type"))
+            val imagesrc = cursor.getInt(cursor.getColumnIndexOrThrow("imagesrc"))
+
+            val menuModel = MenuModel(title, price, type, imagesrc)
+            products.add(menuModel)
+        }
+
+        cursor.close()
+        db.close()
+        return products
+    }
+    fun getCakeProducts(): List<MenuModel> {
+        val products = mutableListOf<MenuModel>()
+        val db = readableDatabase
+
+        val cursor = db.query(
+            "menu", null, "type = ?", arrayOf("cake"), null, null, null
+        )
+
+        while (cursor.moveToNext()) {
+            val title = cursor.getString(cursor.getColumnIndexOrThrow("title"))
+            val price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"))
+            val type = cursor.getString(cursor.getColumnIndexOrThrow("type"))
+            val imagesrc = cursor.getInt(cursor.getColumnIndexOrThrow("imagesrc"))
+
+            val menuModel = MenuModel(title, price, type, imagesrc)
+            products.add(menuModel)
+        }
+
+        cursor.close()
+        db.close()
+        return products
+    }
+    data class MenuModel(val title: String, val price: Double, val type: String, val imagesrc: Int)
 
 
 
