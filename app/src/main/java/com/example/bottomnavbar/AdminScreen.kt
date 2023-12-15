@@ -1,6 +1,7 @@
 package com.example.bottomnavbar
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +22,6 @@ class AdminScreen : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var ordersAdapter: CommandAdapter
     private lateinit var database: FirebaseDatabase
-    //private lateinit var userId: String //we donot need this because we are fetching for all users
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +59,6 @@ class AdminScreen : AppCompatActivity() {
                 ordersAdapter = CommandAdapter(orders) { clickedOrder ->
                     // Handle item click here, e.g., show a dialog
                     showStatusUpdateDialog(clickedOrder)
-                    // The callback to update the order status text
-                    updateOrderStatusText(clickedOrder.orderId, clickedOrder.status)
                 }
                 
                 recyclerView.adapter = ordersAdapter
@@ -78,20 +76,6 @@ class AdminScreen : AppCompatActivity() {
         val formattedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(currentDate)
         contentTextHistory.text = "Admin Orders for to day : $formattedDate"
     }
-
-    private fun updateOrderStatusText(orderId: String, newStatus: String) {
-        // Iterate through the orders list to find the corresponding Order
-        for (order in orders) {
-            if (order.orderId == orderId) {
-                // Update the status of the Order object
-                order.status = newStatus
-                // Notify the adapter that the data has changed to refresh the RecyclerView
-                ordersAdapter.notifyDataSetChanged()
-                break
-            }
-        }
-    }
-
 
     private fun showStatusUpdateDialog(order: Order) {
         val formattedDate = formatDate(order.date)
@@ -136,14 +120,16 @@ class AdminScreen : AppCompatActivity() {
 
         orderRef.child("status").setValue(newStatus)
             .addOnSuccessListener {
-                // Handle success, if needed
-                //here I want to update the text for the new status of the order that is changed
-                //but how to do it
-
+                // Inside your activity class
+                val intent = Intent(this, AdminScreen::class.java)
+                startActivity(intent)
+                finish() // Finish the current activity to recreate it
             }
             .addOnFailureListener {
                 // Handle failure, if needed
             }
     }
+
+
 
 }
