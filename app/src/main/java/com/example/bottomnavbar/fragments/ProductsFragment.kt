@@ -45,7 +45,7 @@ class ProductsFragment : Fragment() {
           dbHelper.insertProduct("Coffee with milk",14.0,"coffee",2)
           dbHelper.insertProduct("Tea",5.0,"drink",3)
           dbHelper.insertProduct("Orange juice",18.0,"drink",4)
-          dbHelper.insertProduct("Kiwi juice",20.0,"drink",5)
+          dbHelper.insertProduct("Kiwi juice",19.0,"drink",5)
           dbHelper.insertProduct("Cocacola",8.0,"drink",6)
           dbHelper.insertProduct("Watter",3.0,"drink",7)
           dbHelper.insertProduct("Croissant",10.0,"cake",8)
