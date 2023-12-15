@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
                 orderRef.child("commande").setValue(commandeinput.text.toString())
                 orderRef.child("classroom").setValue(classroominput.text.toString())
                 orderRef.child("fullname").setValue(fullnameinput.text.toString())
-                orderRef.child("status").setValue("New") //the status can be new or pending or delivered or canceled
+                orderRef.child("status").setValue("new") //the status can be new or pending or delivered or canceled
                 orderRef.child("date").setValue(ServerValue.TIMESTAMP) // Add the order date
 
                 // Update user's stars

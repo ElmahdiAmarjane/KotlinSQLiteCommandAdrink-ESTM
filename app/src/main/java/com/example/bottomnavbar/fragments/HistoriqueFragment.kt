@@ -99,7 +99,10 @@ class HistoriqueFragment : Fragment() {
                         val order = orderSnapshot.getValue(Order::class.java)
                         order?.let { orders.add(it) }
                     }
-                    commandAdapter = CommandAdapter(orders)
+                    commandAdapter = CommandAdapter(orders){ clickedOrder ->
+                        // Handle item click here, e.g., show a dialog
+                        functionjusttoavoiderror(clickedOrder)
+                    }
                     recyclerView.adapter = commandAdapter
 
                     // Update total orders count
@@ -115,5 +118,9 @@ class HistoriqueFragment : Fragment() {
                     // Handle error
                 }
             })
+    }
+
+    private fun functionjusttoavoiderror(clickedOrder: Order) {
+            //no thing I just added this to avoid having errors
     }
 }

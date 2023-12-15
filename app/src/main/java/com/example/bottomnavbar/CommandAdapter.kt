@@ -1,5 +1,6 @@
 package com.example.bottomnavbar
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import com.example.bottomnavbar.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CommandAdapter(private val orders: List<Order>) : RecyclerView.Adapter<CommandAdapter.ViewHolder>() {
+class CommandAdapter(private val orders: List<Order>,private val onItemClickListener: (Order) -> Unit) : RecyclerView.Adapter<CommandAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textCommand: TextView = itemView.findViewById(R.id.textCommand)
@@ -19,7 +20,13 @@ class CommandAdapter(private val orders: List<Order>) : RecyclerView.Adapter<Com
         val textDateCommand: TextView = itemView.findViewById(R.id.textDateCommand)
         val textfullname: TextView = itemView.findViewById(R.id.textfullname)
         val textCommandStatus: TextView = itemView.findViewById(R.id.textCommandStatus)
-      //  val xmarkImageView: ImageView = itemView.findViewById(R.id.xmarkImageView)
+
+        init {
+            textCommandStatus.setOnClickListener {
+                val clickedOrder = orders[adapterPosition]
+                onItemClickListener.invoke(clickedOrder)
+            }
+       }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,6 +42,16 @@ class CommandAdapter(private val orders: List<Order>) : RecyclerView.Adapter<Com
         holder.textfullname.text = currentOrder.fullname
         holder.textCommandStatus.text = currentOrder.status
         holder.textDateCommand.text = formatDate(currentOrder.date)
+
+        // Set the textCommandStatus text and background color based on the order status
+        holder.textCommandStatus.text = currentOrder.status
+        when (currentOrder.status.lowercase(Locale.getDefault())) {
+            "new" -> holder.textCommandStatus.setBackgroundColor(Color.GREEN)
+            "pending" -> holder.textCommandStatus.setBackgroundColor(Color.parseColor("#FFA500")) // Orange
+            "delivered" -> holder.textCommandStatus.setBackgroundColor(Color.BLUE)
+            "canceled" -> holder.textCommandStatus.setBackgroundColor(Color.RED)
+            else -> holder.textCommandStatus.setBackgroundColor(Color.TRANSPARENT)
+        }
     }
 
     override fun getItemCount(): Int {
